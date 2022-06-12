@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 20px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #9cd2c2;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #bbbbbb;
+  }
+}
