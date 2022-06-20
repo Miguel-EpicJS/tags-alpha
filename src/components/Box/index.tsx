@@ -1,7 +1,9 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, Children } from 'react';
 
 import { Search } from '../Search/index';
 import { Tag } from '../Tag/index';
+
+import { api } from '../../services/api';
 
 import './styles.css';
 
@@ -14,8 +16,15 @@ export const Box = ({ children }: PropTypes) => {
 
   function addTag(e: React.MouseEvent<HTMLButtonElement>, text: string) {
     setTags((oldTags) => [...oldTags, text]);
-
-    console.log(tags);
+    try {
+      (() => {
+        api.post('/tags', { value: text }).then((resp) => {
+          console.log(resp);
+        });
+      })();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -23,14 +32,16 @@ export const Box = ({ children }: PropTypes) => {
       <div className="flex flex-wrap justify-start overflow-y-scroll	h-52 scrollbar	">
         {children}
         {tags.map((txt, index) => (
-          <Tag text={txt} deleted={false} key={txt + index} />
+          <Tag
+            text={txt}
+            deleted={false}
+            key={index}
+            id={index + Children.count(children)}
+          />
         ))}
       </div>
       <div className="mt-20">
-        <Search
-          text="Escreva aqui palavras-chave para auxiliar na busca"
-          clickHandler={addTag}
-        />
+        <Search text="Inserir Tag" clickHandler={addTag} />
       </div>
     </div>
   );

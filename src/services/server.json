@@ -1,0 +1,20 @@
+{
+  "tags": [
+    {
+      "id": 0,
+      "value": "Css"
+    },
+    {
+      "id": 1,
+      "value": "Html"
+    },
+    {
+      "id": 2,
+      "value": "JavaScript"
+    },
+    {
+      "id": 3,
+      "value": "Assembly"
+    }
+  ]
+}

@@ -2,18 +2,10 @@ import './styles/GlobalStyles.css';
 
 import { Tag } from './components/Tag/index';
 import { Box } from './components/Box/index';
+import { TagBox } from './components/TagBox/index';
 
 function App() {
-  return (
-    <div className="main">
-      <Box>
-        <Tag text="color" deleted={false} />
-        <Tag text="color" deleted={false} />
-        <Tag text="color" deleted={false} />
-        <Tag text="color" deleted={false} />
-      </Box>
-    </div>
-  );
+  return <TagBox />;
 }
 
 export default App;

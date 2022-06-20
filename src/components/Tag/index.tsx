@@ -1,16 +1,26 @@
 import { useState } from 'react';
 
+import { api } from '../../services/api';
+
 import './styles.css';
 
 interface PropTypes {
   text: string;
   deleted: boolean;
+  id: number;
 }
 
-export const Tag = ({ text, deleted }: PropTypes) => {
+export const Tag = ({ text, deleted, id }: PropTypes) => {
   const [hidden, setHidden] = useState(false);
-
   if (deleted || hidden) {
+    try {
+      (() => {
+        api.delete(`/tags/${id}`).then((resp) => {});
+      })();
+    } catch (error) {
+      console.log(error);
+    }
+
     return <span></span>;
   }
 
