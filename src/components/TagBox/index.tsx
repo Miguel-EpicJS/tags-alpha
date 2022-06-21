@@ -30,10 +30,6 @@ export const TagBox = () => {
     }
   }, []);
 
-  /* if (loading) {
-    return <Loading />;
-  } */
-
   const renderTags = () => {
     return tags.map((txt, index) => (
       <Tag text={txt} deleted={false} key={index} id={index} />
