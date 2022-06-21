@@ -1,5 +1,6 @@
 import { Tag } from '../Tag/index';
 import { Box } from '../Box/index';
+import { Loading } from '../Loading/index';
 import { useEffect, useState } from 'react';
 
 import { api } from '../../services/api';
@@ -29,19 +30,19 @@ export const TagBox = () => {
     }
   }, []);
 
-  if (loading) {
-    return (
-      <h1 className="flex flex-wrap justify-center text-5xl	">Loading...</h1>
-    );
-  }
+  /* if (loading) {
+    return <Loading />;
+  } */
+
+  const renderTags = () => {
+    return tags.map((txt, index) => (
+      <Tag text={txt} deleted={false} key={index} id={index} />
+    ));
+  };
 
   return (
     <div className="main flex flex-wrap justify-center">
-      <Box>
-        {tags.map((txt, index) => (
-          <Tag text={txt} deleted={false} key={index} id={index} />
-        ))}
-      </Box>
+      <Box>{loading ? <Loading /> : renderTags()}</Box>
     </div>
   );
 };
